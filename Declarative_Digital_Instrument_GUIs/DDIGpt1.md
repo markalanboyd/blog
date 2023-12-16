@@ -1,5 +1,7 @@
 # Declarative Digital Instrument GUIs with Lua in Audulus - Part 1: Grid Controller
 
+note 📝: [The Github repo for the UI library is available here](https://github.com/markalanboyd/Audulus-Canvas). I'm trying to get my first programming job, and this is a major portfolio piece, so please give it a ⭐ to make it stand out!
+
 ## Intro
 
 [Audulus](http://audulus.com) is a modular synthesizer visual programming environment for Mac and iPad. You can use it to create digital instruments and MIDI controllers from scratch without coding by connecting nodes together with wires.
@@ -308,6 +310,6 @@ It would also be great if each `btn` could work like a mini touchpad itself to s
 
 ### Sky's the Limit
 
-I plan on expanding this library until it is a very powerful tool for creating declarative UIs and music visualizers. I'm also thinking it'd be a cool way to experiment with understanding primitive 2d and 3d rendering engines.
+I plan on expanding this library until it is a very powerful tool for creating declarative UIs and music visualizers. I'm also thinking it'd be a cool way to experiment with understanding primitive 2d and 3d rendering engines. Perhaps even a Doom clone in my future?
 
 I'm not sure many people will end up using this, if any at all, but I'm confident if you've made it this far and you're just starting out with Audulus and coding and want to build things using the Canvas node, you'll get a lot out of this series as you build along with me.
