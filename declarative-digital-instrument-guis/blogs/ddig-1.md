@@ -12,7 +12,7 @@ When I was first starting to learn to code, I had an idea to create a graphics l
 
 Creating these helper functions allowed me to create a really fantastic UI for a 5x5 Matrix Sequencer module which you can see in the video below.
 
-[![Wired Up with Mark 7 - 5x5 Matrix Sequencer Walkthrough](img/DDIGpt1/wuwm_7_thumbnail.png)](https://www.youtube.com/watch?v=RZ9FWGlDOpk)
+[![Wired Up with Mark 7 - 5x5 Matrix Sequencer Walkthrough](../img/ddig-1/wuwm_7_thumbnail.png)
 
 ## Restarting the Project with a Grid Controller
 
@@ -20,21 +20,21 @@ It's been a while, though, since I worked on this library. I decided to revisit 
 
 I began this overhaul by making a grid controller. Grid controllers are a popular tool to use when making electronic music. The buttons can do anything you want them to, but usually they trigger samples, act as a sequencer, or a type of keyboard. The Ableton Push is a great example of a grid controller.
 
-[![Ableton Push 2](img/DDIGpt1/ableton_push.png)](https://www.ableton.com/en/push/)
+[![Ableton Push 2](../img/ddig-1/ableton_push.png)](https://www.ableton.com/en/push/)
 
 In Audulus, you can make a grid controller by laying out rows and columns of Trigger nodes. This is effective, but it can be a little tedious to wire and lay out. You're also stuck with the one circular button type. The worst is when you want to add lights that respond to some information like current step - that means duplicating all this layout work and wiring.
 
-![Trigger Grid](img/DDIGpt1/trigger.gif)
+![Trigger Grid](../img/ddig-1/trigger.gif)
 
 The Canvas node allows us to do something similar, but in a more modular and customizable way. In the example below, the buttons are square and have a cool features that allows you to drag you mouse or finger along them to quickly reverse their on/off states - something you can't do with the Trigger node.
 
-![Grid controller](img/DDIGpt1/grid.gif)
+![Grid controller](../img/ddig-1/grid.gif)
 
 The whole UI for this controller is drawn declaratively in Lua using a higher-order tiling function that allows us to conveniently define the number of rows and columns of buttons we want.
 
 The Trigger node packages a UI as well as its touch capability into one node. To replicate the touch functionality, we have to integrate a touch layer using the Touch Pad node.
 
-![Inside grid controller](img/DDIGpt1/grid_inside.png)
+![Inside grid controller](../img/ddig-1/grid_inside.png)
 
 The Touch Pad node gives us a surface to interact with using the mouse or our finger. It outputs the current 0 to 1 x,y coordinate and a touch signal that is (for our purposes here) either 0 (untouched) or 1 (touched).
 
@@ -57,17 +57,17 @@ btn_array = [
 
 By examining the gif below you can get an even better idea of what's going on with the Expr node.
 
-![Touch Pad idVals](img/DDIGpt1/gridvals.gif)
+![Touch Pad idVals](../img/ddig-1/gridvals.gif)
 
 This value is taken as the `idVal` variable that we use to address the little 16-bit memory array I created to hold the state of each button. We check if `t > 0` (meaning the Touch Pad is being touched) and if `idVal` is equal to the `id` of that memory location.
 
 Pictured below is the 16-bit memory array. On the left is where the `t` and `idVal` signals enter, and on the right are where the individual nodes' on/off states exit.
 
-![Memory array](img/DDIGpt1/memory-array.png)
+![Memory array](../img/ddig-1/memory-array.png)
 
 Inside each of the memory nodes is the logic I mentioned before. When the logic expression evaluates to true, the Expr node output goes from 0 to 1 and triggers the Flip-Flop there to change state from 0 to 1 or 1 to 0.
 
-![Memory node](img/DDIGpt1/memory-node.png)
+![Memory node](../img/ddig-1/memory-node.png)
 
 ## The Grid UI Canvas Code
 
