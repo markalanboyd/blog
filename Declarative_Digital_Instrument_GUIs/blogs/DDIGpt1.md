@@ -106,10 +106,10 @@ function btn(x, y, size, options)
    
     local function drawButton()
         local br = tIsInside() and 1 or 0
-	    local st = grid[id] * 0.5
-	    local f = math.max(0, math.min(br + st, 1))
-	    local paint = color_paint({c[1] * f , c[2] * f, c[3] * f, c[4]})
-    	fill_rect(pA, pB, 0, paint)
+        local st = grid[id] * 0.5
+        local f = math.max(0, math.min(br + st, 1))
+        local paint = color_paint({c[1] * f , c[2] * f, c[3] * f, c[4]})
+        fill_rect(pA, pB, 0, paint)
     end
    
     drawButton()
@@ -120,8 +120,8 @@ function tileFn(func, r, c)
     return function(x, y, s, o)
         for i = 0, c - 1 do
             for j = 0, r - 1 do
-            	idx = j * c + i + 1
-            	local options = {id = idx, pad = o.pad, color = o.color}
+                idx = j * c + i + 1
+                local options = {id = idx, pad = o.pad, color = o.color}
                 func(x + i * s, y + j * s, s, options)
             end
         end
@@ -142,7 +142,7 @@ tileBtn(0, 0, 50, {pad=3, color=theme.azureHighlight})
 
 This part just notes what the inputs to the Canvas node should be called. Inputs are declared in a field in the editor of the node rather than inside the code blocks.
 
-tX and ty are the Touch Pad's x and y coordinates, and the t variable is the touch signal. The rest of the inputs are the individual button states represented by their coordinates. 
+tX and ty are the Touch Pad's x and y coordinates, and the t variable is the touch signal. The rest of the inputs are the individual button states represented by their coordinates.
 
 ```lua
 tX = tX * canvas_width
@@ -164,7 +164,7 @@ This portion packs the set of 16 variables into a table called `grid`. This is f
 
 ### function btn
 
-This function draws each button. 
+This function draws each button.
 
 ```lua
 function btn(x, y, size, options)
@@ -178,6 +178,7 @@ local id = options.id or 0
 local pad = options.pad or 0
 local c = options.color or {1, 1, 1, 1}
 ```
+
 These lines unpack the optional arguments. Lua doesn't have optional keyword arguments like Python, but this is a way to effectively do the same thing.
 
 While initializing these variables, you either pull from what's been passed to `options` and assign it to a local variable, or you set a default value.
@@ -213,7 +214,7 @@ local function drawButton()
 end
 ```
 
-As the name implies, this function actually draws the button itself. The `br` or brightness variable checks first if `tIsInside()` and if it is, then it's set to 1 - otherwise it's set to 0. 
+As the name implies, this function actually draws the button itself. The `br` or brightness variable checks first if `tIsInside()` and if it is, then it's set to 1 - otherwise it's set to 0.
 
 `st` is the button state, which is bound to the `grid[id]` and then attenuated by half so that we still have room for the button to get brighter as it's being pushed.
 
